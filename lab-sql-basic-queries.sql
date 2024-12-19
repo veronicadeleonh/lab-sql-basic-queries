@@ -26,14 +26,14 @@ SELECT COUNT(*) FROM staff;
 SELECT * FROM rental;
 SELECT * FROM inventory;
 
-#Available for rent
+-- Available for rent
 SELECT COUNT(DISTINCT inventory.inventory_id) AS available_films
 FROM inventory
 LEFT JOIN rental ON inventory.inventory_id = rental.inventory_id
 WHERE rental.return_date IS NOT NULL
 	OR rental_id IS NULL;
     
-#Still rented
+-- Still rented
 SELECT COUNT(inventory.inventory_id) AS rented_films
 FROM inventory
 INNER JOIN rental on inventory.inventory_id = rental.inventory_id
@@ -53,7 +53,7 @@ LIMIT 10;
 
 #7.1
 SELECT first_name, last_name FROM actor
-WHERE first_name = "Scarlett";
+WHERE first_name = "SCARLETT";
 
 -- SELECT first_name, last_name FROM actor
 -- WHERE first_name IN ("SCARLETT");
@@ -63,5 +63,5 @@ SELECT title, description, length FROM film
 WHERE title LIKE "%ARMAGEDDON%" AND length > 100;
 
 #7.3
-SELECT * FROM film
+SELECT COUNT(*) FROM film
 WHERE special_features LIKE "%Behind the Scenes%";
